@@ -1,22 +1,24 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 pragma solidity ^0.8.15;
 
-import "forge-std/Test.sol";
+import {OpWrap} from "src/OpWrap.sol";
+import {IERC721} from "src/interfaces/IERC721.sol";
 
-import {Greeter} from "src/Greeter.sol";
+import {Test} from "forge-std/Test.sol";
+import {MockERC721} from "solmate/test/utils/mocks/MockERC721.sol";
 
-contract GreeterTest is Test {
-    using stdStorage for StdStorage;
+contract OpWrapTest is Test {
+    OpWrap wrapper;
+    MockERC721 token;
+    address OWNER = address(0x1337);
 
-    Greeter greeter;
-    ErrorsTest test;
-
-    event GMEverybodyGM();
-
+    /// @notice Set up the testing suite
     function setUp() public {
-        console.log(unicode"🧪 Testing Greeter...");
-        greeter = new Greeter("gm");
-        test = new ErrorsTest();
+        // Deploy a mock Optimism NFT
+        token = new MockERC721("Token", "TKN");
+
+        // Deploy the wrapper
+        wrapper = new OpWrap(IERC721(address(token)), OWNER);
     }
 
     // VM Cheatcodes can be found in ./lib/forge-std/src/Vm.sol

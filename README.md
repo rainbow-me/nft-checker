@@ -1,21 +1,9 @@
 <img align="right" width="150" height="150" top="100" src="./assets/readme.jpg">
 
-# femplate • [![ci](https://github.com/abigger87/femplate/actions/workflows/ci.yml/badge.svg)](https://github.com/abigger87/femplate/actions/workflows/ci.yml) ![license](https://img.shields.io/github/license/abigger87/femplate?label=license) ![solidity](https://img.shields.io/badge/solidity-^0.8.15-lightgrey)
+# op-nft • [![ci](https://github.com/rainbow-me/op-nft/actions/workflows/ci.yml/badge.svg)](https://github.com/rainbow-me/op-nft/actions/workflows/ci.yml) ![license](https://img.shields.io/github/license/rainbow-me/op-nft?label=license) ![solidity](https://img.shields.io/badge/solidity-^0.8.15-lightgrey)
 
-A **Clean**, **Robust** Template for Foundry Projects.
+Wrapper for Batching Optimism NFT Balance Requests.
 
-## Getting Started
-
-Click [`use this template`](https://github.com/abigger87/femplate/generate) to create a new repository with this repo as the initial state.
-
-Or, if your repo already exists, run:
-```sh
-forge init --template https://github.com/abigger87/femplate
-git submodule update --init --recursive
-forge install
-```
-
-Run `./scripts/rename.sh` to rename all instances of `femplate` with the name of your project/repository.
 
 ## Blueprint
 
@@ -26,9 +14,9 @@ lib
 scripts
 ├─ Deploy.s.sol — Simple Deployment Script
 src
-├─ Greeter — A Minimal Greeter Contract
+├─ OpWrap — The Wrapper Contract
 test
-└─ Greeter.t — Exhaustive Tests
+└─ OpWrap.t — Tests
 ```
 
 

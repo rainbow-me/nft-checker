@@ -20,6 +20,25 @@ jobs:
       - name: Run Tests
         run: FOUNDRY_PROFILE=ci forge test
 
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Install deps
+        run: forge install
+
+      - name: Check contract sizes
+        run: forge build --sizes
+
+      - name: Check gas snapshots
+        run: forge snapshot --check
+
   scripts:
     strategy:
       fail-fast: true
