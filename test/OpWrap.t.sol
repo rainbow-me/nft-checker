@@ -21,39 +21,76 @@ contract OpWrapTest is Test {
         wrapper = new OpWrap(IERC721(address(token)), OWNER);
     }
 
-    // VM Cheatcodes can be found in ./lib/forge-std/src/Vm.sol
-    // Or at https://github.com/foundry-rs/forge-std
-    function testSetGm() public {
-        greeter.setGm("gm gm");
-
-        // Expect the GMEverybodyGM event to be fired
-        vm.expectEmit(true, true, true, true);
-        emit GMEverybodyGM();
-        greeter.gm("gm gm");
-
-        // Expect the gm() call to revert
-        vm.expectRevert(abi.encodeWithSignature("BadGm()"));
-        greeter.gm("gm");
-
-        // We can read slots directly
-        uint256 slot = stdstore.target(address(greeter)).sig(greeter.owner.selector).find();
-        assertEq(slot, 1);
-        bytes32 owner = vm.load(address(greeter), bytes32(slot));
-        assertEq(address(this), address(uint160(uint256(owner))));
-
-        console.log(unicode"✅ good morning tests passed!");
+    /// @notice Test the wrapper setup
+    function testSetup() public {
+        assertEq(address(wrapper.token()), address(token));
+        assertEq(wrapper.owner(), OWNER);
     }
 
-    // Standard Errors can be found in ./lib/forge-std/src/Test.sol
-    // Or at https://github.com/foundry-rs/forge-std
-    function testExpectArithmetic() public {
-        vm.expectRevert(stdError.arithmeticError);
-        test.arithmeticError(10);
-    }
-}
+    /// @notice Test the areOwners function
+    function testAreOwnersLast(address[] memory potentialOwners) public {
+        // Non-owners should not be owners
+        assertEq(wrapper.areOwners(potentialOwners), false);
 
-contract ErrorsTest {
-    function arithmeticError(uint256 a) external pure {
-        a - 100;
+        // Mint the last potential owner a token
+        vm.assume(potentialOwners.length > 0);
+        vm.assume(potentialOwners[potentialOwners.length - 1] != address(0));
+        token.mint(potentialOwners[potentialOwners.length - 1], 1);
+        assertEq(wrapper.areOwners(potentialOwners), true);
+    }
+
+    /// @notice Test the areOwners function
+    function testAreOwnersFirst(address[] memory potentialOwners) public {
+        // Non-owners should not be owners
+        assertEq(wrapper.areOwners(potentialOwners), false);
+
+        // Mint the last potential owner a token
+        vm.assume(potentialOwners.length > 0);
+        vm.assume(potentialOwners[0] != address(0));
+        token.mint(potentialOwners[0], 1);
+        assertEq(wrapper.areOwners(potentialOwners), true);
+    }
+
+    /// @notice Test setting the token
+    function testSetToken(address caller) public {
+        vm.assume(caller != OWNER);
+
+        // Non-owner can't set the token
+        vm.startPrank(caller);
+        vm.expectRevert(abi.encodeWithSignature("Unauthorized()"));
+        wrapper.setToken(IERC721(caller));
+        vm.stopPrank();
+        assertEq(address(wrapper.token()), address(token));
+
+        // Owner can set the token
+        vm.startPrank(OWNER);
+        wrapper.setToken(IERC721(caller));
+        assertEq(address(wrapper.token()), caller);
+        wrapper.setToken(IERC721(address(token)));
+        vm.stopPrank();
+    }
+
+    /// @notice Test setting the owner
+    function testSetOwner(address caller) public {
+        vm.assume(caller != OWNER);
+
+        // Non-owner can't set the owner
+        vm.startPrank(caller);
+        vm.expectRevert(abi.encodeWithSignature("Unauthorized()"));
+        wrapper.setOwner(caller);
+        vm.stopPrank();
+        assertEq(wrapper.owner(), OWNER);
+
+        // Owner can set the token
+        vm.startPrank(OWNER);
+        wrapper.setOwner(caller);
+        assertEq(wrapper.owner(), caller);
+        vm.stopPrank();
+
+        // Set the owner back
+        vm.startPrank(caller);
+        wrapper.setOwner(OWNER);
+        assertEq(wrapper.owner(), OWNER);
+        vm.stopPrank();
     }
 }

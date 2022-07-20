@@ -9,9 +9,11 @@ Wrapper for Batching Optimism NFT Balance Requests.
 
 [op-nft](https://github.com/rainbow-me/op-nft) is a wrapper for the Official Optimism NFT to batch balance calls.
 
+
 **Optimism NFT KOVAN**: [`0x58AcA48312f44C2f8215E5FBa67078Fb0cfd45bA`](https://kovan-optimistic.etherscan.io/address/0x58AcA48312f44C2f8215E5FBa67078Fb0cfd45bA)
 
-**Optimism NFT MAINNET**: [`___`](https://optimistic.etherscan.io/address/)
+**Optimism NFT MAINNET**: [`0x81b30ff521D1fEB67EDE32db726D95714eb00637`](https://optimistic.etherscan.io/address/0x81b30ff521D1fEB67EDE32db726D95714eb00637)
+
 
 **Deployment Status**
 

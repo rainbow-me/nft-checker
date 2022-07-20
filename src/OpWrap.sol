@@ -11,8 +11,8 @@ contract OpWrap {
   /// @notice The Optimism Token
   IERC721 public token;
 
-  /// @notice The Immutable Owner
-  address immutable public OWNER;
+  /// @notice The Owner
+  address public owner;
 
   /// @notice Thrown when an unauthorized caller makes a call to this contract
   error Unauthorized();
@@ -20,17 +20,15 @@ contract OpWrap {
   /// @notice Instantiate the Batcher
   constructor(IERC721 _token, address _owner) {
     token = _token;
-    OWNER = _owner;
+    owner = _owner;
   }
 
   /// @notice Returns if one of the given addresses is a token owner.
-  function areOwners(address[] potentialOwners) public view returns (bool) {
+  function areOwners(address[] memory potentialOwners) public view returns (bool) {
     uint256 length = potentialOwners.length;
     uint256 i;
     for (i = 0; i < length;) {
-      if(token.balanceOf(potentialOwners[i])){
-        return true
-      }
+      if (potentialOwners[i] != address(0) && token.balanceOf(potentialOwners[i]) > 0) return true;
       unchecked { ++i; }
     }
     return false;
@@ -38,7 +36,13 @@ contract OpWrap {
 
   /// @notice Allows the owner to set the token.
   function setToken(IERC721 newToken) external {
-    if (msg.sender != OWNER) revert Unauthorized();
-    token = newtoken;
+    if (msg.sender != owner) revert Unauthorized();
+    token = newToken;
+  }
+
+  /// @notice Allows the owner to set a new owner.
+  function setOwner(address newOwner) external {
+    if (msg.sender != owner) revert Unauthorized();
+    owner = newOwner;
   }
 }
