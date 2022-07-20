@@ -29,24 +29,32 @@ contract OpWrapTest is Test {
 
     /// @notice Test the areOwners function
     function testAreOwnersLast(address[] memory potentialOwners) public {
+        // None of the addresses can be zero
+        for (uint256 i = 0; i < potentialOwners.length; i++) {
+            vm.assume(potentialOwners[i] != address(0));
+        }
+
         // Non-owners should not be owners
         assertEq(wrapper.areOwners(potentialOwners), false);
 
         // Mint the last potential owner a token
         vm.assume(potentialOwners.length > 0);
-        vm.assume(potentialOwners[potentialOwners.length - 1] != address(0));
         token.mint(potentialOwners[potentialOwners.length - 1], 1);
         assertEq(wrapper.areOwners(potentialOwners), true);
     }
 
     /// @notice Test the areOwners function
     function testAreOwnersFirst(address[] memory potentialOwners) public {
+        // None of the addresses can be zero
+        for (uint256 i = 0; i < potentialOwners.length; i++) {
+            vm.assume(potentialOwners[i] != address(0));
+        }
+
         // Non-owners should not be owners
         assertEq(wrapper.areOwners(potentialOwners), false);
 
         // Mint the last potential owner a token
         vm.assume(potentialOwners.length > 0);
-        vm.assume(potentialOwners[0] != address(0));
         token.mint(potentialOwners[0], 1);
         assertEq(wrapper.areOwners(potentialOwners), true);
     }

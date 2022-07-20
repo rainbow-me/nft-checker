@@ -28,7 +28,7 @@ contract OpWrap {
     uint256 length = potentialOwners.length;
     uint256 i;
     for (i = 0; i < length;) {
-      if (potentialOwners[i] != address(0) && token.balanceOf(potentialOwners[i]) > 0) return true;
+      if (token.balanceOf(potentialOwners[i]) > 0) return true;
       unchecked { ++i; }
     }
     return false;
