@@ -17,9 +17,9 @@ Wrapper for Batching Optimism NFT Balance Requests.
 
 **Deployment Status**
 
-[Optimism Mainnet] [`OpWrap`](./src/OpWrap.sol): [``](https://optimistic.etherscan.io/address/)
+[Optimism Mainnet] [`OpWrap`](./src/OpWrap.sol): [`0x96a4f2d63b30c78e27025c2a4e4d3c049d02bdcb`](https://optimistic.etherscan.io/address/0x96a4f2d63b30c78e27025c2a4e4d3c049d02bdcb)
 
-[Optimism Kovan] [`OpWrap`](./src/OpWrap.sol): [``](https://kovan-optimismic.etherscan.io/address/)
+[Optimism Kovan] [`OpWrap`](./src/OpWrap.sol): [`0x715da5e53526bedac9bd96e8fdb7efb185d1b6ca`](https://kovan-optimismic.etherscan.io/address/0x715da5e53526bedac9bd96e8fdb7efb185d1b6ca)
 
 
 ## Deployment Notes
@@ -27,13 +27,13 @@ Wrapper for Batching Optimism NFT Balance Requests.
 **Deploying to Optimism Mainnet**
 ```bash
 source .env
-forge script script/Deploy.s.sol:Deploy --rpc-url $OPTIMISM_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY -vvvv
+forge script script/DeployOpKovan.s.sol:DeployOpKovan --rpc-url $OPTIMISM_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY -vvvv
 ```
 
 **Deploying to Optimism Kovan**
 ```bash
 source .env
-forge script script/Deploy.s.sol:Deploy --rpc-url $OPTIMISM_KOVAN --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY -vvvv
+forge script script/DeployOpMainnet.s.sol:DeployOpMainnet --rpc-url $OPTIMISM_KOVAN --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY -vvvv
 ```
 
 

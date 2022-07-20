@@ -9,7 +9,7 @@ import {Script} from 'forge-std/Script.sol';
 /// @title Deploy Optimism Mainnet
 contract DeployOpMainnet is Script {
   address constant OPTIMISM_NFT = 0x81b30ff521D1fEB67EDE32db726D95714eb00637;
-  address constant OWNER = 0xc9AB63915c6738c8Ce5ca245979203Bfa3F2499F;
+  address constant OWNER = 0x0c36A5b01E1668C867A5e58f23bb6cb4d83a4cc8;
 
   function run() external returns (OpWrap wrapper) {
     vm.startBroadcast();

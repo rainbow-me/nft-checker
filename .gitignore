@@ -8,7 +8,4 @@ out/
 # Ignore all vscode settings
 .vscode/
 
-# Ignore flattened files
-flattened.txt
-
 broadcast
