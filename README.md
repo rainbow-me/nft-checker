@@ -1,6 +1,6 @@
-<img align="right" width="150" height="150" top="100" src="./assets/readme.jpg">
+<img align="right" width="150" height="150" top="100" src="./assets/optimism.svg">
 
-# op-nft • [![ci](https://github.com/rainbow-me/op-nft/actions/workflows/ci.yml/badge.svg)](https://github.com/rainbow-me/op-nft/actions/workflows/ci.yml) ![license](https://img.shields.io/github/license/rainbow-me/op-nft?label=license) ![solidity](https://img.shields.io/badge/solidity-^0.8.15-lightgrey)
+# op-nft • [![ci](https://github.com/rainbow-me/op-nft/actions/workflows/ci.yml/badge.svg)](https://github.com/rainbow-me/op-nft/actions/workflows/ci.yml) [![license](https://img.shields.io/badge/License-Apache_3.0-blue.svg?label=license)](https://opensource.org/licenses/Apache-3.0) ![solidity](https://img.shields.io/badge/solidity-^0.8.15-lightgrey)
 
 Wrapper for Batching Optimism NFT Balance Requests.
 
