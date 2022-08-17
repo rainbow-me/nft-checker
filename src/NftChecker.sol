@@ -4,8 +4,9 @@ pragma solidity ^0.8.15;
 import {IERC721} from "src/interfaces/IERC721.sol";
 
 /// @title NftChecker
+/// @author bruno <https://github.com/brunobar79>
 /// @author asnared <https://github.com/abigger87>
-/// @notice Batches Calls to an ERC721 Contract
+/// @notice Checks if one of many NFTs are ownerd by any of the given addresses
 contract NftChecker {
     /// @notice Returns if one of the given addresses is a token owner.
     function areOwners(address[] memory targets, address[] memory potentialOwners) public view returns (bool) {

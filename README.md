@@ -24,8 +24,6 @@ Wrapper for Batching NFT Ownership checks.
 [Polygon Mainnet] [`NftChecker`](./src/NftChecker.sol): [`TBD`](https://polyscan.io/address/TBD)
 
 
-
-
 ## Deployment Notes
 
 **Deploying to Ethereum Mainnet**
@@ -58,7 +56,7 @@ forge script script/DeployArbMainnet.s.sol:DeployArbMainnet --rpc-url $ARBITRUM_
 ```ml
 lib
 ├─ forge-std — https://github.com/foundry-rs/forge-std
-├─ solmate — https://github.com/Rari-Capital/solmate
+├─ solmate — https://github.com/transmissions11/solmate
 scripts
 ├─ DeployArbOne.s.sol — Arbitrum One Deployment Script
 ├─ DeployEthMainnet.s.sol — Ethereum Mainnet Deployment Script
@@ -73,7 +71,7 @@ test
 
 ## License
 
-[AGPL-3.0-only](https://github.com/abigger87/femplate/blob/master/LICENSE)
+[AGPL-3.0-only](https://github.com/rainbow-me/nft-checker/blob/main/LICENSE)
 
 
 ## Acknowledgements
