@@ -3,6 +3,23 @@ name: ci
 on: [push]
 
 jobs:
+  fmt:
+    name: Forge Formatting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Foundry
+        uses: onbjerg/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Install Dependencies
+        run: forge install
+
+      - name: Format
+        run: forge fmt --check
+
   tests:
     name: Forge Testing
     runs-on: ubuntu-latest
@@ -63,8 +80,6 @@ jobs:
 
       - name: Run scripts
         run: |
-          ls -lsa
-          ls script/
           for file in script/*; do
             forge script $file
           done
