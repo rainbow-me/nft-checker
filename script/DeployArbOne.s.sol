@@ -2,13 +2,13 @@
 pragma solidity ^0.8.15;
 
 import {NftChecker} from "src/NftChecker.sol";
-import {Script} from 'forge-std/Script.sol';
+import {Script} from "forge-std/Script.sol";
 
 /// @title Deploy Arbitrum One
 contract DeployArbOne is Script {
-  function run() external returns (NftChecker wrapper) {
-    vm.startBroadcast();
-    wrapper = new NftChecker();
-    vm.stopBroadcast();
-  }
+    function run() external returns (NftChecker wrapper) {
+        vm.startBroadcast();
+        wrapper = new NftChecker();
+        vm.stopBroadcast();
+    }
 }

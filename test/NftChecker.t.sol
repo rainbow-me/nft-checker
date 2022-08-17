@@ -15,7 +15,6 @@ contract NftCheckerTest is Test {
     address[] token2Array;
     address[] token1And2Array;
     address[] token2And1Array;
-        
 
     /// @notice Set up the testing suite
     function setUp() public {
@@ -28,11 +27,9 @@ contract NftCheckerTest is Test {
         token1And2Array = [address(token1), address(token2)];
         token2And1Array = [address(token1), address(token2)];
 
-
         // Deploy the instance
         instance = new NftChecker();
     }
-
 
     /// @notice Test the areOwners function
     function testAreOwnersLast(address[] memory potentialOwners) public {
@@ -69,11 +66,11 @@ contract NftCheckerTest is Test {
         for (uint256 i = 0; i < potentialOwners.length; i++) {
             vm.assume(potentialOwners[i] != address(0));
         }
-        
+
         // Non-owners should not be owners
-        assertEq(instance.areOwners(token1Array, potentialOwners), false);        
-        assertEq(instance.areOwners(token2Array, potentialOwners), false);        
-        assertEq(instance.areOwners(token1And2Array, potentialOwners), false);        
+        assertEq(instance.areOwners(token1Array, potentialOwners), false);
+        assertEq(instance.areOwners(token2Array, potentialOwners), false);
+        assertEq(instance.areOwners(token1And2Array, potentialOwners), false);
     }
 
     function testMultipleOwners(address[] memory potentialOwners) public {
@@ -81,7 +78,6 @@ contract NftCheckerTest is Test {
         for (uint256 i = 0; i < potentialOwners.length; i++) {
             vm.assume(potentialOwners[i] != address(0));
         }
-
 
         // Check one owner against multiple targets with single ownership
         vm.assume(potentialOwners.length > 0);
@@ -95,5 +91,4 @@ contract NftCheckerTest is Test {
         assertEq(instance.areOwners(token1And2Array, potentialOwners), true);
         assertEq(instance.areOwners(token2And1Array, potentialOwners), true);
     }
-
 }

@@ -7,24 +7,28 @@ import {IERC721} from "src/interfaces/IERC721.sol";
 /// @author asnared <https://github.com/abigger87>
 /// @notice Batches Calls to an ERC721 Contract
 contract NftChecker {
-
-  /// @notice Returns if one of the given addresses is a token owner.
-  function areOwners(address[] memory targets, address[] memory potentialOwners) public view returns (bool) {
-    uint256 targetsLength = targets.length;
-    uint256 potentialOwnersLength = potentialOwners.length;
-    uint256 i;
-    uint256 j;
-    // for every contract in the targets array
-    for (i = 0; i < targetsLength;) {
-    
-      // for every address in the potential owners array
-      for (j = 0; j < potentialOwnersLength;) {
-        // if the potential owner is an actual owner, return true
-        if (IERC721(targets[i]).balanceOf(potentialOwners[j]) > 0) return true;
-        unchecked { ++j; }
-      }
-      unchecked { ++i; }
+    /// @notice Returns if one of the given addresses is a token owner.
+    function areOwners(address[] memory targets, address[] memory potentialOwners) public view returns (bool) {
+        uint256 targetsLength = targets.length;
+        uint256 potentialOwnersLength = potentialOwners.length;
+        uint256 i;
+        uint256 j;
+        // for every contract in the targets array
+        for (i = 0; i < targetsLength;) {
+            // for every address in the potential owners array
+            for (j = 0; j < potentialOwnersLength;) {
+                // if the potential owner is an actual owner, return true
+                if (IERC721(targets[i]).balanceOf(potentialOwners[j]) > 0) {
+                    return true;
+                }
+                unchecked {
+                    ++j;
+                }
+            }
+            unchecked {
+                ++i;
+            }
+        }
+        return false;
     }
-    return false;
-  }
 }
