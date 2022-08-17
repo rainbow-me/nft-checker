@@ -1,39 +1,55 @@
 <img align="right" width="150" height="150" top="100" src="./assets/optimism.svg">
 
-# op-nft • [![ci](https://github.com/rainbow-me/op-nft/actions/workflows/ci.yml/badge.svg)](https://github.com/rainbow-me/op-nft/actions/workflows/ci.yml) [![license](https://img.shields.io/badge/License-Apache_3.0-blue.svg?label=license)](https://opensource.org/licenses/Apache-3.0) ![solidity](https://img.shields.io/badge/solidity-^0.8.15-lightgrey)
+# nft-checker • [![ci](https://github.com/rainbow-me/nft-checker/actions/workflows/ci.yml/badge.svg)](https://github.com/rainbow-me/nft-checker/actions/workflows/ci.yml) [![license](https://img.shields.io/badge/License-Apache_3.0-blue.svg?label=license)](https://opensource.org/licenses/Apache-3.0) ![solidity](https://img.shields.io/badge/solidity-^0.8.15-lightgrey)
 
-Wrapper for Batching Optimism NFT Balance Requests.
+Wrapper for Batching NFT Ownership checks.
 
 
 ## Overview
 
-[op-nft](https://github.com/rainbow-me/op-nft) is a wrapper for the Official Optimism NFT to batch balance calls.
+[nft-checker](https://github.com/rainbow-me/nft-checker) is a wrapper to check an array of contracts against an array of addresses.
 
 
-**Optimism NFT KOVAN**: [`0x58AcA48312f44C2f8215E5FBa67078Fb0cfd45bA`](https://kovan-optimistic.etherscan.io/address/0x58AcA48312f44C2f8215E5FBa67078Fb0cfd45bA)
-
-**Optimism NFT MAINNET**: [`0x81b30ff521D1fEB67EDE32db726D95714eb00637`](https://optimistic.etherscan.io/address/0x81b30ff521D1fEB67EDE32db726D95714eb00637)
+**Ethereum MAINNET**: [`TBD`](https://optimistic.etherscan.io/address/TBD)
+**Arbitrum One**: [`TBD`](https://optimistic.etherscan.io/address/TBD)
+**Optimism MAINNET**: [`TBD`](https://optimistic.etherscan.io/address/TBD)
+**Polygon MAINNET**: [`TBD`](https://optimistic.etherscan.io/address/TBD)
 
 
 **Deployment Status**
 
-[Optimism Mainnet] [`OpWrap`](./src/OpWrap.sol): [`0x96a4f2d63b30c78e27025c2a4e4d3c049d02bdcb`](https://optimistic.etherscan.io/address/0x96a4f2d63b30c78e27025c2a4e4d3c049d02bdcb)
+[Ethereum Mainnet] [`NftChecker`](./src/NftChecker.sol): [`TBD`](https://etherscan.io/address/TBD)
+[Arbitrum One] [`NftChecker`](./src/NftChecker.sol): [`TBD`](https://arbiscan.io/address/TBD)
+[Optimism Mainnet] [`NftChecker`](./src/NftChecker.sol): [`TBD`](https://optimistic.etherscan.io/address/TBD)
+[Polygon Mainnet] [`NftChecker`](./src/NftChecker.sol): [`TBD`](https://polyscan.io/address/TBD)
 
-[Optimism Kovan] [`OpWrap`](./src/OpWrap.sol): [`0x715da5e53526bedac9bd96e8fdb7efb185d1b6ca`](https://kovan-optimismic.etherscan.io/address/0x715da5e53526bedac9bd96e8fdb7efb185d1b6ca)
+
 
 
 ## Deployment Notes
 
+**Deploying to Ethereum Mainnet**
+```bash
+source .env
+forge script script/DeployEthMainnet.s.sol:DeployEthMainnet --rpc-url $ETHEREUM_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_MAINNET -vvvv
+```
+
 **Deploying to Optimism Mainnet**
 ```bash
 source .env
-forge script script/DeployOpKovan.s.sol:DeployOpKovan --rpc-url $OPTIMISM_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY -vvvv
+forge script script/DeployOpMainnet.s.sol:DeployOpMainnet --rpc-url $OPTIMISM_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_OPTIMISM -vvvv
 ```
 
-**Deploying to Optimism Kovan**
+**Deploying to Polygon Mainnet**
 ```bash
 source .env
-forge script script/DeployOpMainnet.s.sol:DeployOpMainnet --rpc-url $OPTIMISM_KOVAN --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY -vvvv
+forge script script/DeployPolygonMainnet.s.sol:DeployPolygonMainnet --rpc-url $POLYGON_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_POLYGON -vvvv
+```
+
+**Deploying to Arbitrum One**
+```bash
+source .env
+forge script script/DeployArbMainnet.s.sol:DeployArbMainnet --rpc-url $ARBITRUM_ONE --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_ABRITRUM -vvvv
 ```
 
 
@@ -44,11 +60,14 @@ lib
 ├─ forge-std — https://github.com/foundry-rs/forge-std
 ├─ solmate — https://github.com/Rari-Capital/solmate
 scripts
-├─ Deploy.s.sol — Simple Deployment Script
+├─ DeployArbOne.s.sol — Arbitrum One Deployment Script
+├─ DeployEthMainnet.s.sol — Ethereum Mainnet Deployment Script
+├─ DeployOpMainnet.s.sol — Optimism Mainnet Deployment Script
+├─ DeployPolgonMainnet.s.sol — Polygon Deployment Script
 src
-├─ OpWrap — The Wrapper Contract
+├─ NftChecker — The Checker Contract
 test
-└─ OpWrap.t — Tests
+└─ NftChecker.t — Tests
 ```
 
 

@@ -4,8 +4,8 @@ pragma solidity ^0.8.15;
 import {NftChecker} from "src/NftChecker.sol";
 import {Script} from 'forge-std/Script.sol';
 
-/// @title Deploy Optimism Mainnet
-contract DeployOpMainnet is Script {
+/// @title Deploy Arbitrum One
+contract DeployArbOne is Script {
   function run() external returns (NftChecker wrapper) {
     vm.startBroadcast();
     wrapper = new NftChecker();
