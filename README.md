@@ -1,4 +1,4 @@
-<img align="right" width="150" height="150" top="100" src="./assets/optimism.svg">
+<img align="right" width="150" height="150" top="100" src="./assets/face-with-monocle.png">
 
 # nft-checker • [![ci](https://github.com/rainbow-me/nft-checker/actions/workflows/ci.yml/badge.svg)](https://github.com/rainbow-me/nft-checker/actions/workflows/ci.yml) [![license](https://img.shields.io/badge/License-Apache_3.0-blue.svg?label=license)](https://opensource.org/licenses/Apache-3.0) ![solidity](https://img.shields.io/badge/solidity-^0.8.15-lightgrey)
 
@@ -10,18 +10,16 @@ Wrapper for Batching NFT Ownership checks.
 [nft-checker](https://github.com/rainbow-me/nft-checker) is a wrapper to check an array of contracts against an array of addresses.
 
 
-**Ethereum MAINNET**: [`TBD`](https://optimistic.etherscan.io/address/TBD)
-**Arbitrum One**: [`TBD`](https://optimistic.etherscan.io/address/TBD)
-**Optimism MAINNET**: [`TBD`](https://optimistic.etherscan.io/address/TBD)
-**Polygon MAINNET**: [`TBD`](https://optimistic.etherscan.io/address/TBD)
-
 
 **Deployment Status**
 
-[Ethereum Mainnet] [`NftChecker`](./src/NftChecker.sol): [`TBD`](https://etherscan.io/address/TBD)
-[Arbitrum One] [`NftChecker`](./src/NftChecker.sol): [`TBD`](https://arbiscan.io/address/TBD)
-[Optimism Mainnet] [`NftChecker`](./src/NftChecker.sol): [`TBD`](https://optimistic.etherscan.io/address/TBD)
-[Polygon Mainnet] [`NftChecker`](./src/NftChecker.sol): [`TBD`](https://polyscan.io/address/TBD)
+[Ethereum Mainnet] [`NftChecker`](./src/NftChecker.sol): [`0x47c9c137fc9aa5ccdbea707b0b27d52780565476`](https://etherscan.io/address/0x47c9c137fc9aa5ccdbea707b0b27d52780565476)
+
+[Arbitrum One] [`NftChecker`](./src/NftChecker.sol): [`0x2a0332e28913a06fa924d40a3e2160f763010417`](https://arbiscan.io/address/0x2a0332e28913a06fa924d40a3e2160f763010417)
+
+[Optimism Mainnet] [`NftChecker`](./src/NftChecker.sol): [`0x400a9f1bb1db80643c33710c2232a0d74ef5cff1`](https://optimistic.etherscan.io/address/0x400a9f1bb1db80643c33710c2232a0d74ef5cff1)
+
+[Polygon Mainnet] [`NftChecker`](./src/NftChecker.sol): [`0x400a9f1bb1db80643c33710c2232a0d74ef5cff1`](https://polyscan.io/address/0x400a9f1bb1db80643c33710c2232a0d74ef5cff1)
 
 
 ## Deployment Notes
@@ -47,7 +45,7 @@ forge script script/DeployPolygonMainnet.s.sol:DeployPolygonMainnet --rpc-url $P
 **Deploying to Arbitrum One**
 ```bash
 source .env
-forge script script/DeployArbMainnet.s.sol:DeployArbMainnet --rpc-url $ARBITRUM_ONE --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_ABRITRUM -vvvv
+forge script script/DeployArbOne.s.sol:DeployArbOne --rpc-url $ARBITRUM_ONE --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_ARBITRUM -vvvv
 ```
 
 
