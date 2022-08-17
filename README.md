@@ -59,7 +59,7 @@ scripts
 ├─ DeployArbOne.s.sol — Arbitrum One Deployment Script
 ├─ DeployEthMainnet.s.sol — Ethereum Mainnet Deployment Script
 ├─ DeployOpMainnet.s.sol — Optimism Mainnet Deployment Script
-├─ DeployPolgonMainnet.s.sol — Polygon Deployment Script
+├─ DeployPolygonMainnet.s.sol — Polygon Deployment Script
 src
 ├─ NftChecker — The Checker Contract
 test
