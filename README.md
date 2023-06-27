@@ -9,17 +9,14 @@ Wrapper for Batching NFT Ownership checks.
 
 [nft-checker](https://github.com/rainbow-me/nft-checker) is a wrapper to check an array of contracts against an array of addresses.
 
-
-
 **Deployment Status**
 
-[Ethereum Mainnet] [`NftChecker`](./src/NftChecker.sol): [`0x47c9c137fc9aa5ccdbea707b0b27d52780565476`](https://etherscan.io/address/0x47c9c137fc9aa5ccdbea707b0b27d52780565476)
-
-[Arbitrum One] [`NftChecker`](./src/NftChecker.sol): [`0x2a0332e28913a06fa924d40a3e2160f763010417`](https://arbiscan.io/address/0x2a0332e28913a06fa924d40a3e2160f763010417)
-
-[Optimism Mainnet] [`NftChecker`](./src/NftChecker.sol): [`0x400a9f1bb1db80643c33710c2232a0d74ef5cff1`](https://optimistic.etherscan.io/address/0x400a9f1bb1db80643c33710c2232a0d74ef5cff1)
-
-[Polygon Mainnet] [`NftChecker`](./src/NftChecker.sol): [`0x400a9f1bb1db80643c33710c2232a0d74ef5cff1`](https://polyscan.io/address/0x400a9f1bb1db80643c33710c2232a0d74ef5cff1)
+**Ethereum MAINNET**: [`0x47c9c137fc9aa5ccdbea707b0b27d52780565476`](https://etherscan.io/address/0x47c9c137fc9aa5ccdbea707b0b27d52780565476)
+**Arbitrum One**: [`0x2a0332e28913a06fa924d40a3e2160f763010417`](https://arbiscan.io/address/0x2a0332e28913a06fa924d40a3e2160f763010417)
+**Optimism MAINNET**: [`0x400a9f1bb1db80643c33710c2232a0d74ef5cff1`](https://optimistic.etherscan.io/address/0x400a9f1bb1db80643c33710c2232a0d74ef5cff1)
+**Polygon MAINNET**: [`0x400a9f1bb1db80643c33710c2232a0d74ef5cff1`](https://polygonscan.com/address/0x400a9f1bb1db80643c33710c2232a0d74ef5cff1)
+**Zora Network**: [`0x12A39421C23f4D3f788C33f0F9281652Ac4f909a`](https://explorer.zora.energy/address/0x12A39421C23f4D3f788C33f0F9281652Ac4f909a)
+**BSC Mainnet**: [`0x5a9d9ffbd5a22f2790af726550920b845c3a6b35`](https://bscscan.com/address/0x5a9d9ffbd5a22f2790af726550920b845c3a6b35)
 
 
 ## Deployment Notes
@@ -45,8 +42,19 @@ forge script script/DeployPolygonMainnet.s.sol:DeployPolygonMainnet --rpc-url $P
 **Deploying to Arbitrum One**
 ```bash
 source .env
-forge script script/DeployArbOne.s.sol:DeployArbOne --rpc-url $ARBITRUM_ONE --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_ARBITRUM -vvvv
+forge script script/DeployArbOne.s.sol:DeployArbOne --rpc-url $ARBITRUM_ONE --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_ABRITRUM -vvvv
 ```
+
+**Deploying to Zora Network**
+```bash
+source .env
+forge script script/DeployZoraMainnet.s.sol:DeployZoraMainnet --rpc-url $ZORA_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast -vvvv
+```
+
+**Deploying to BSC**
+```bash
+source .env
+forge script script/DeployBSCMainnet.s.sol:DeployBSCMainnet --rpc-url $BSC_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_BSC -vvvv
 
 
 ## Blueprint
