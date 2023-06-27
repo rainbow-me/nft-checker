@@ -1,4 +1,4 @@
-NftCheckerTest:testAreOwnersFirst(address[]) (runs: 1000, μ: 186900, ~: 187527)
-NftCheckerTest:testAreOwnersLast(address[]) (runs: 1000, μ: 752265, ~: 758070)
-NftCheckerTest:testMultipleOwners(address[]) (runs: 1000, μ: 346645, ~: 347741)
-NftCheckerTest:testNotAnOwner(address[]) (runs: 1000, μ: 1282005, ~: 1296861)
+NftCheckerTest:testAreOwnersFirst(address[]) (runs: 256, μ: 180336, ~: 171064)
+NftCheckerTest:testAreOwnersLast(address[]) (runs: 256, μ: 743102, ~: 757801)
+NftCheckerTest:testMultipleOwners(address[]) (runs: 256, μ: 335252, ~: 319163)
+NftCheckerTest:testNotAnOwner(address[]) (runs: 256, μ: 1273078, ~: 1267954)
