@@ -18,6 +18,8 @@ Wrapper for Batching NFT Ownership checks.
 **Zora Network**: [`0x12A39421C23f4D3f788C33f0F9281652Ac4f909a`](https://explorer.zora.energy/address/0x12A39421C23f4D3f788C33f0F9281652Ac4f909a)
 **BSC Mainnet**: [`0x5a9d9ffbd5a22f2790af726550920b845c3a6b35`](https://bscscan.com/address/0x5a9d9ffbd5a22f2790af726550920b845c3a6b35)
 
+**BASE Mainnet**: [`0x5a9d9ffbd5a22f2790af726550920b845c3a6b35`](https://bscscan.com/address/0x5a9d9ffbd5a22f2790af726550920b845c3a6b35)
+
 
 ## Deployment Notes
 
@@ -49,6 +51,12 @@ forge script script/DeployArbOne.s.sol:DeployArbOne --rpc-url $ARBITRUM_ONE --pr
 ```bash
 source .env
 forge script script/DeployZoraMainnet.s.sol:DeployZoraMainnet --rpc-url $ZORA_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast -vvvv
+```
+
+**Deploying to Base Network**
+```bash
+source .env
+forge script script/DeployBaseMainnet.s.sol:DeployBaseMainnet --rpc-url $BASE_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast -vvvv
 ```
 
 **Deploying to BSC**
