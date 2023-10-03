@@ -25,6 +25,8 @@ Wrapper for Batching NFT Ownership checks.
 
 **BASE Mainnet**: [`0x7edddf0b8e7471e0ebf0df67ad179598c0bef695`](https://basescan.org/address/0x7edddf0b8e7471e0ebf0df67ad179598c0bef695)
 
+**Gnosis Chain**: [`0x12a39421c23f4d3f788c33f0f9281652ac4f909a`](https://gnosisscan.io/address/0x12a39421c23f4d3f788c33f0f9281652ac4f909a)
+
 
 ## Deployment Notes
 
@@ -68,6 +70,12 @@ forge script script/DeployBaseMainnet.s.sol:DeployBaseMainnet --rpc-url $BASE_MA
 ```bash
 source .env
 forge script script/DeployBSCMainnet.s.sol:DeployBSCMainnet --rpc-url $BSC_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_BSC -vvvv
+
+
+**Deploying to Gnosis**
+```bash
+source .env
+forge script script/DeployGnosisMainnet.s.sol:DeployGnosisMainnet --rpc-url $GNOSIS_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_GNOSIS -vvvv
 
 
 ## Blueprint
