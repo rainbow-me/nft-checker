@@ -27,6 +27,8 @@ Wrapper for Batching NFT Ownership checks.
 
 **Gnosis Chain**: [`0x12a39421c23f4d3f788c33f0f9281652ac4f909a`](https://gnosisscan.io/address/0x12a39421c23f4d3f788c33f0f9281652ac4f909a)
 
+**Avalanche**: [`0x12a39421c23f4d3f788c33f0f9281652ac4f909a`](https://snowtrace.io/address/0x12a39421c23f4d3f788c33f0f9281652ac4f909a)
+
 
 ## Deployment Notes
 
@@ -76,6 +78,12 @@ forge script script/DeployBSCMainnet.s.sol:DeployBSCMainnet --rpc-url $BSC_MAINN
 ```bash
 source .env
 forge script script/DeployGnosisMainnet.s.sol:DeployGnosisMainnet --rpc-url $GNOSIS_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_GNOSIS -vvvv
+```
+
+**Deploying to Avalanche**
+```bash
+source .env
+forge script script/DeployAvalancheMainnet.s.sol:DeployAvalancheMainnet --rpc-url $AVALANCHE_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_AVALANCHE -vvvv
 ```
 
 ## Blueprint
