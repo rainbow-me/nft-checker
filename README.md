@@ -27,8 +27,7 @@ Wrapper for Batching NFT Ownership checks.
 
 **Gnosis Chain**: [`0x12a39421c23f4d3f788c33f0f9281652ac4f909a`](https://gnosisscan.io/address/0x12a39421c23f4d3f788c33f0f9281652ac4f909a)
 
-
-**Avalanche**: [`0x12a39421c23f4d3f788c33f0f9281652ac4f909a`](https://gnosisscan.io/address/0x12a39421c23f4d3f788c33f0f9281652ac4f909a)
+**Avalanche**: [`0x12a39421c23f4d3f788c33f0f9281652ac4f909a`](https://snowtrace.io/address/0x12a39421c23f4d3f788c33f0f9281652ac4f909a)
 
 
 ## Deployment Notes
