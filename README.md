@@ -70,13 +70,13 @@ forge script script/DeployBaseMainnet.s.sol:DeployBaseMainnet --rpc-url $BASE_MA
 ```bash
 source .env
 forge script script/DeployBSCMainnet.s.sol:DeployBSCMainnet --rpc-url $BSC_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_BSC -vvvv
-
+```
 
 **Deploying to Gnosis**
 ```bash
 source .env
 forge script script/DeployGnosisMainnet.s.sol:DeployGnosisMainnet --rpc-url $GNOSIS_MAINNET --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_GNOSIS -vvvv
-
+```
 
 ## Blueprint
 
