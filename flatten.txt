@@ -1,56 +1,294 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 pragma solidity ^0.8.20;
 
-/// @title ERC165 Interface
-/// @notice Interface of the ERC165 standard <https://eips.ethereum.org/EIPS/eip-165[EIP]>
-/// @author Modified from openzeppelin-contracts <https://github.com/OpenZeppelin/openzeppelin-contracts>
+// src/interfaces/IERC165.sol
+
+// OpenZeppelin Contracts (last updated v5.1.0) (utils/introspection/IERC165.sol)
+
+/**
+ * @dev Interface of the ERC-165 standard, as defined in the
+ * https://eips.ethereum.org/EIPS/eip-165[ERC].
+ *
+ * Implementers can declare support of contract interfaces, which can then be
+ * queried by others ({ERC165Checker}).
+ *
+ * For an implementation, see {ERC165}.
+ */
 interface IERC165 {
-    /// @notice Returns true if this contract implements the interface defined by `interfaceId`
+    /**
+     * @dev Returns true if this contract implements the interface defined by
+     * `interfaceId`. See the corresponding
+     * https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[ERC section]
+     * to learn more about how these ids are created.
+     *
+     * This function call must use less than 30 000 gas.
+     */
     function supportsInterface(bytes4 interfaceId) external view returns (bool);
 }
 
-/// @title ERC721 Interface
-/// @author Modified from openzeppelin-contracts <https://github.com/OpenZeppelin/openzeppelin-contracts>
+// src/interfaces/IERC1155.sol
+
+// OpenZeppelin Contracts (last updated v5.1.0) (token/ERC1155/IERC1155.sol)
+
+/**
+ * @dev Required interface of an ERC-1155 compliant contract, as defined in the
+ * https://eips.ethereum.org/EIPS/eip-1155[ERC].
+ */
+interface IERC1155 is IERC165 {
+    /**
+     * @dev Emitted when `value` amount of tokens of type `id` are transferred from `from` to `to` by `operator`.
+     */
+    event TransferSingle(address indexed operator, address indexed from, address indexed to, uint256 id, uint256 value);
+
+    /**
+     * @dev Equivalent to multiple {TransferSingle} events, where `operator`, `from` and `to` are the same for all
+     * transfers.
+     */
+    event TransferBatch(
+        address indexed operator,
+        address indexed from,
+        address indexed to,
+        uint256[] ids,
+        uint256[] values
+    );
+
+    /**
+     * @dev Emitted when `account` grants or revokes permission to `operator` to transfer their tokens, according to
+     * `approved`.
+     */
+    event ApprovalForAll(address indexed account, address indexed operator, bool approved);
+
+    /**
+     * @dev Emitted when the URI for token type `id` changes to `value`, if it is a non-programmatic URI.
+     *
+     * If an {URI} event was emitted for `id`, the standard
+     * https://eips.ethereum.org/EIPS/eip-1155#metadata-extensions[guarantees] that `value` will equal the value
+     * returned by {IERC1155MetadataURI-uri}.
+     */
+    event URI(string value, uint256 indexed id);
+
+    /**
+     * @dev Returns the value of tokens of token type `id` owned by `account`.
+     */
+    function balanceOf(address account, uint256 id) external view returns (uint256);
+
+    /**
+     * @dev xref:ROOT:erc1155.adoc#batch-operations[Batched] version of {balanceOf}.
+     *
+     * Requirements:
+     *
+     * - `accounts` and `ids` must have the same length.
+     */
+    function balanceOfBatch(
+        address[] calldata accounts,
+        uint256[] calldata ids
+    ) external view returns (uint256[] memory);
+
+    /**
+     * @dev Grants or revokes permission to `operator` to transfer the caller's tokens, according to `approved`,
+     *
+     * Emits an {ApprovalForAll} event.
+     *
+     * Requirements:
+     *
+     * - `operator` cannot be the zero address.
+     */
+    function setApprovalForAll(address operator, bool approved) external;
+
+    /**
+     * @dev Returns true if `operator` is approved to transfer ``account``'s tokens.
+     *
+     * See {setApprovalForAll}.
+     */
+    function isApprovedForAll(address account, address operator) external view returns (bool);
+
+    /**
+     * @dev Transfers a `value` amount of tokens of type `id` from `from` to `to`.
+     *
+     * WARNING: This function can potentially allow a reentrancy attack when transferring tokens
+     * to an untrusted contract, when invoking {onERC1155Received} on the receiver.
+     * Ensure to follow the checks-effects-interactions pattern and consider employing
+     * reentrancy guards when interacting with untrusted contracts.
+     *
+     * Emits a {TransferSingle} event.
+     *
+     * Requirements:
+     *
+     * - `to` cannot be the zero address.
+     * - If the caller is not `from`, it must have been approved to spend ``from``'s tokens via {setApprovalForAll}.
+     * - `from` must have a balance of tokens of type `id` of at least `value` amount.
+     * - If `to` refers to a smart contract, it must implement {IERC1155Receiver-onERC1155Received} and return the
+     * acceptance magic value.
+     */
+    function safeTransferFrom(address from, address to, uint256 id, uint256 value, bytes calldata data) external;
+
+    /**
+     * @dev xref:ROOT:erc1155.adoc#batch-operations[Batched] version of {safeTransferFrom}.
+     *
+     * WARNING: This function can potentially allow a reentrancy attack when transferring tokens
+     * to an untrusted contract, when invoking {onERC1155BatchReceived} on the receiver.
+     * Ensure to follow the checks-effects-interactions pattern and consider employing
+     * reentrancy guards when interacting with untrusted contracts.
+     *
+     * Emits either a {TransferSingle} or a {TransferBatch} event, depending on the length of the array arguments.
+     *
+     * Requirements:
+     *
+     * - `ids` and `values` must have the same length.
+     * - If `to` refers to a smart contract, it must implement {IERC1155Receiver-onERC1155BatchReceived} and return the
+     * acceptance magic value.
+     */
+    function safeBatchTransferFrom(
+        address from,
+        address to,
+        uint256[] calldata ids,
+        uint256[] calldata values,
+        bytes calldata data
+    ) external;
+}
+
+// src/interfaces/IERC721.sol
+
+// OpenZeppelin Contracts (last updated v5.1.0) (token/ERC721/IERC721.sol)
+
+/**
+ * @dev Required interface of an ERC-721 compliant contract.
+ */
 interface IERC721 is IERC165 {
-    // Events
+    /**
+     * @dev Emitted when `tokenId` token is transferred from `from` to `to`.
+     */
     event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
+
+    /**
+     * @dev Emitted when `owner` enables `approved` to manage the `tokenId` token.
+     */
     event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
+
+    /**
+     * @dev Emitted when `owner` enables or disables (`approved`) `operator` to manage all of its assets.
+     */
     event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
 
-    /// @notice Returns the number of tokens in ``owner``'s account.
+    /**
+     * @dev Returns the number of tokens in ``owner``'s account.
+     */
     function balanceOf(address owner) external view returns (uint256 balance);
 
-    /// @notice Returns the owner of the `tokenId` token.
+    /**
+     * @dev Returns the owner of the `tokenId` token.
+     *
+     * Requirements:
+     *
+     * - `tokenId` must exist.
+     */
     function ownerOf(uint256 tokenId) external view returns (address owner);
 
-    /// @notice Safely transfers `tokenId` token from `from` to `to`.
+    /**
+     * @dev Safely transfers `tokenId` token from `from` to `to`.
+     *
+     * Requirements:
+     *
+     * - `from` cannot be the zero address.
+     * - `to` cannot be the zero address.
+     * - `tokenId` token must exist and be owned by `from`.
+     * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.
+     * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon
+     *   a safe transfer.
+     *
+     * Emits a {Transfer} event.
+     */
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
 
-    /// @notice Safely transfers `tokenId` token from `from` to `to`.
+    /**
+     * @dev Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients
+     * are aware of the ERC-721 protocol to prevent tokens from being forever locked.
+     *
+     * Requirements:
+     *
+     * - `from` cannot be the zero address.
+     * - `to` cannot be the zero address.
+     * - `tokenId` token must exist and be owned by `from`.
+     * - If the caller is not `from`, it must have been allowed to move this token by either {approve} or
+     *   {setApprovalForAll}.
+     * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon
+     *   a safe transfer.
+     *
+     * Emits a {Transfer} event.
+     */
     function safeTransferFrom(address from, address to, uint256 tokenId) external;
 
-    /// @notice Transfers `tokenId` token from `from` to `to`.
+    /**
+     * @dev Transfers `tokenId` token from `from` to `to`.
+     *
+     * WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC-721
+     * or else they may be permanently lost. Usage of {safeTransferFrom} prevents loss, though the caller must
+     * understand this adds an external call which potentially creates a reentrancy vulnerability.
+     *
+     * Requirements:
+     *
+     * - `from` cannot be the zero address.
+     * - `to` cannot be the zero address.
+     * - `tokenId` token must be owned by `from`.
+     * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.
+     *
+     * Emits a {Transfer} event.
+     */
     function transferFrom(address from, address to, uint256 tokenId) external;
 
-    /// @notice Gives permission to `to` to transfer `tokenId` token to another account.
+    /**
+     * @dev Gives permission to `to` to transfer `tokenId` token to another account.
+     * The approval is cleared when the token is transferred.
+     *
+     * Only a single account can be approved at a time, so approving the zero address clears previous approvals.
+     *
+     * Requirements:
+     *
+     * - The caller must own the token or be an approved operator.
+     * - `tokenId` must exist.
+     *
+     * Emits an {Approval} event.
+     */
     function approve(address to, uint256 tokenId) external;
 
-    /// @notice Approve or remove `operator` as an operator for the caller.
-    function setApprovalForAll(address operator, bool _approved) external;
+    /**
+     * @dev Approve or remove `operator` as an operator for the caller.
+     * Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller.
+     *
+     * Requirements:
+     *
+     * - The `operator` cannot be the address zero.
+     *
+     * Emits an {ApprovalForAll} event.
+     */
+    function setApprovalForAll(address operator, bool approved) external;
 
-    /// @notice Returns the account approved for `tokenId` token.
+    /**
+     * @dev Returns the account approved for `tokenId` token.
+     *
+     * Requirements:
+     *
+     * - `tokenId` must exist.
+     */
     function getApproved(uint256 tokenId) external view returns (address operator);
 
-    /// @notice Returns if the `operator` is allowed to manage all of the assets of `owner`.
+    /**
+     * @dev Returns if the `operator` is allowed to manage all of the assets of `owner`.
+     *
+     * See {setApprovalForAll}
+     */
     function isApprovedForAll(address owner, address operator) external view returns (bool);
 }
+
+// src/NftChecker.sol
 
 /// @title NftChecker
 /// @author bruno <https://github.com/brunobar79>
 /// @author asnared <https://github.com/abigger87>
 /// @notice Checks if one of many NFTs are ownerd by any of the given addresses
 contract NftChecker {
-    /// @notice Returns if one of the given addresses is a token owner.
+
+    /// @notice Returns if one of the given addresses is a token owner for ERC-721 tokens.
     function areOwners(address[] memory targets, address[] memory potentialOwners) public view returns (bool) {
         uint256 targetsLength = targets.length;
         uint256 potentialOwnersLength = potentialOwners.length;
@@ -60,7 +298,7 @@ contract NftChecker {
         for (i = 0; i < targetsLength;) {
             // for every address in the potential owners array
             for (j = 0; j < potentialOwnersLength;) {
-                // if the potential owner is an actual owner, return true
+                // if the potential owner is an actual owner of ERC721
                 if (IERC721(targets[i]).balanceOf(potentialOwners[j]) > 0) {
                     return true;
                 }
@@ -74,5 +312,35 @@ contract NftChecker {
         }
         return false;
     }
-}
 
+    /// @notice Struct to hold an NFT address and token ID
+    struct TokenInfo {
+        address account;
+        uint256 id;
+    }
+
+    /// @notice Returns if one of the given addresses is a token owner for ERC-1155 tokens.
+    function areOwners(TokenInfo[] memory targets, address[] memory potentialOwners) public view returns (bool) {
+        uint256 targetsLength = targets.length;
+        uint256 potentialOwnersLength = potentialOwners.length;
+        uint256 i;
+        uint256 j;
+        // for every contract in the targets array
+        for (i = 0; i < targetsLength;) {
+            // for every address in the potential owners array
+            for (j = 0; j < potentialOwnersLength;) {
+                // if the potential owner is an actual owner of ERC1155
+                if (IERC1155(targets[i].account).balanceOf(potentialOwners[j], targets[i].id) > 0) {
+                    return true;
+                }
+                unchecked {
+                    ++j;
+                }
+            }
+            unchecked {
+                ++i;
+            }
+        }
+        return false;
+    }
+}
