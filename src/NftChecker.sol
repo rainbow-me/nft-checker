@@ -2,6 +2,7 @@
 pragma solidity ^0.8.20;
 
 import {IERC721} from "src/interfaces/IERC721.sol";
+import {IERC1155} from "src/interfaces/IERC1155.sol";
 
 /// @title NftChecker
 /// @author bruno <https://github.com/brunobar79>
@@ -18,8 +19,12 @@ contract NftChecker {
         for (i = 0; i < targetsLength;) {
             // for every address in the potential owners array
             for (j = 0; j < potentialOwnersLength;) {
-                // if the potential owner is an actual owner, return true
+                // if the potential owner is an actual owner of ERC721
                 if (IERC721(targets[i]).balanceOf(potentialOwners[j]) > 0) {
+                    return true;
+                }
+                // if the potential owner is an actual owner of ERC1155
+                if (IERC1155(targets[i]).balanceOf(potentialOwners[j], 1) > 0) { // Assuming token ID 1 for ERC1155
                     return true;
                 }
                 unchecked {
