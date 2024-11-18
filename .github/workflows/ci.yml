@@ -18,7 +18,7 @@ jobs:
         run: forge install
 
       - name: Format
-        run: forge fmt --check
+        run: forge fmt --check src/NftChecker.sol test/NftChecker.t.sol
 
   tests:
     name: Forge Testing
