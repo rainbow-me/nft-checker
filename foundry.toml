@@ -1,5 +1,5 @@
 [profile.default]
-solc_version = '0.8.15'
+solc_version = '0.8.20'
 auto_detect_solc = false
 optimizer = true
 ffi = true
