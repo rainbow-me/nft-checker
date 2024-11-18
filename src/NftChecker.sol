@@ -9,7 +9,6 @@ import {IERC1155} from "src/interfaces/IERC1155.sol";
 /// @author asnared <https://github.com/abigger87>
 /// @notice Checks if one of many NFTs are ownerd by any of the given addresses
 contract NftChecker {
-
     /// @notice Returns if one of the given addresses is a token owner for ERC-721 tokens.
     function areOwners(address[] memory targets, address[] memory potentialOwners) public view returns (bool) {
         uint256 targetsLength = targets.length;

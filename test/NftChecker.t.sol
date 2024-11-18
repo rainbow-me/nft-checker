@@ -103,10 +103,7 @@ contract NftCheckerTest is Test {
 
         // Create TokenInfo array with single token
         NftChecker.TokenInfo[] memory tokenInfos = new NftChecker.TokenInfo[](1);
-        tokenInfos[0] = NftChecker.TokenInfo({
-            account: address(token1155),
-            id: 1
-        });
+        tokenInfos[0] = NftChecker.TokenInfo({account: address(token1155), id: 1});
 
         // Initially no one owns tokens
         assertEq(instance.areOwners(tokenInfos, potentialOwners), false);
@@ -118,14 +115,8 @@ contract NftCheckerTest is Test {
 
         // Test with multiple tokens
         NftChecker.TokenInfo[] memory multipleTokens = new NftChecker.TokenInfo[](2);
-        multipleTokens[0] = NftChecker.TokenInfo({
-            account: address(token1155),
-            id: 1
-        });
-        multipleTokens[1] = NftChecker.TokenInfo({
-            account: address(token1155),
-            id: 2
-        });
+        multipleTokens[0] = NftChecker.TokenInfo({account: address(token1155), id: 1});
+        multipleTokens[1] = NftChecker.TokenInfo({account: address(token1155), id: 2});
 
         // Should still return true with just first token owned
         assertEq(instance.areOwners(multipleTokens, potentialOwners), true);
