@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-pragma solidity ^0.8.15;
+pragma solidity ^0.8.20;
 
 /// @title ERC165 Interface
 /// @notice Interface of the ERC165 standard <https://eips.ethereum.org/EIPS/eip-165[EIP]>

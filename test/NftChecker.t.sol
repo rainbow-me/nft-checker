@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-pragma solidity ^0.8.15;
+pragma solidity ^0.8.20;
 
 import {NftChecker} from "src/NftChecker.sol";
 import {IERC721} from "src/interfaces/IERC721.sol";
