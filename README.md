@@ -11,23 +11,23 @@ Wrapper for Batching NFT Ownership checks.
 
 **Deployment Status**
 
-**Ethereum MAINNET**: [`0x47c9c137fc9aa5ccdbea707b0b27d52780565476`](https://etherscan.io/address/0x47c9c137fc9aa5ccdbea707b0b27d52780565476)
+**Ethereum MAINNET**: [`0xc4A8619B3980d84F6d59d416d415007A1217fEc8`](https://etherscan.io/address/0xc4A8619B3980d84F6d59d416d415007A1217fEc8)
 
-**Arbitrum One**: [`0x2a0332e28913a06fa924d40a3e2160f763010417`](https://arbiscan.io/address/0x2a0332e28913a06fa924d40a3e2160f763010417)
+**Arbitrum One**: [`0x5A9D9FFBd5a22f2790AF726550920B845c3A6B35`](https://arbiscan.io/address/0x5A9D9FFBd5a22f2790AF726550920B845c3A6B35)
 
-**Optimism MAINNET**: [`0x400a9f1bb1db80643c33710c2232a0d74ef5cff1`](https://optimistic.etherscan.io/address/0x400a9f1bb1db80643c33710c2232a0d74ef5cff1)
+**Optimism MAINNET**: [`0x5A9D9FFBd5a22f2790AF726550920B845c3A6B35`](https://optimistic.etherscan.io/address/0x5A9D9FFBd5a22f2790AF726550920B845c3A6B35)
 
-**Polygon MAINNET**: [`0x400a9f1bb1db80643c33710c2232a0d74ef5cff1`](https://polygonscan.com/address/0x400a9f1bb1db80643c33710c2232a0d74ef5cff1)
+**Polygon MAINNET**: [`0x3e3937C119BD854059844D3D03A8116a18Afa409`](https://polygonscan.com/address/0x3e3937C119BD854059844D3D03A8116a18Afa409)
 
-**Zora Network**: [`0x12A39421C23f4D3f788C33f0F9281652Ac4f909a`](https://explorer.zora.energy/address/0x12A39421C23f4D3f788C33f0F9281652Ac4f909a)
+**Zora Network**: [`0x75efed6B8AF6B0490c2899e489c58EF26E3D0898`](https://explorer.zora.energy/address/0x75efed6B8AF6B0490c2899e489c58EF26E3D0898)
 
-**BSC Mainnet**: [`0x5a9d9ffbd5a22f2790af726550920b845c3a6b35`](https://bscscan.com/address/0x5a9d9ffbd5a22f2790af726550920b845c3a6b35)
+**BSC Mainnet**: [`0x50a42aB85A09e24229e42dAd31Cb44B42E83b2De`](https://bscscan.com/address/0x50a42aB85A09e24229e42dAd31Cb44B42E83b2De)
 
-**BASE Mainnet**: [`0x7edddf0b8e7471e0ebf0df67ad179598c0bef695`](https://basescan.org/address/0x7edddf0b8e7471e0ebf0df67ad179598c0bef695)
+**BASE Mainnet**: [`0xa5d7b264ad7039F54A670c27Fe5A64CAd0FE0cCe`](https://basescan.org/address/0xa5d7b264ad7039F54A670c27Fe5A64CAd0FE0cCe)
 
-**Gnosis Chain**: [`0x12a39421c23f4d3f788c33f0f9281652ac4f909a`](https://gnosisscan.io/address/0x12a39421c23f4d3f788c33f0f9281652ac4f909a)
+**Gnosis Chain**: [`0x2488F7B6FD1A0949391fE6a533D7E5c4704173E2`](https://gnosisscan.io/address/0x2488F7B6FD1A0949391fE6a533D7E5c4704173E2)
 
-**Avalanche**: [`0x12a39421c23f4d3f788c33f0f9281652ac4f909a`](https://snowtrace.io/address/0x12a39421c23f4d3f788c33f0f9281652ac4f909a)
+**Avalanche**: [`0x2a0332E28913A06Fa924d40A3E2160f763010417`](https://snowtrace.io/address/0x2a0332E28913A06Fa924d40A3E2160f763010417)
 
 
 ## Deployment Notes
@@ -53,7 +53,7 @@ forge script script/DeployPolygonMainnet.s.sol:DeployPolygonMainnet --rpc-url $P
 **Deploying to Arbitrum One**
 ```bash
 source .env
-forge script script/DeployArbOne.s.sol:DeployArbOne --rpc-url $ARBITRUM_ONE --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_ABRITRUM -vvvv
+forge script script/DeployArbOne.s.sol:DeployArbOne --rpc-url $ARBITRUM_ONE --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY_ARBITRUM -vvvv
 ```
 
 **Deploying to Zora Network**
